@@ -1,38 +1,66 @@
-.App {
+:root{
+  --primary-background-color: #35155D;
+  --secondary-background-color: #512B81;
+  --primary-color: #4477CE;
+  --secondary-color: #8CABFF;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--primary-background-color);
+  background-size: cover; /* Ensures the background image covers the entire element */
+  background-repeat: no-repeat; /* Prevents the background image from repeating */
+  background-position: center center; /* Centers the background image */
+}
+
+.landing-page {
   text-align: center;
+  padding: 50px;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header {
+  background-color: var(--secondary-background-color);
+  color: #ffffff;
+  padding: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.features {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-around;
+  margin: 50px 0;
 }
 
-.App-link {
-  color: #61dafb;
+.feature {
+  flex: 1;
+  margin: 0 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: var(--primary-color);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.footer {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.betting-card{
+  background-color: var(--secondary-background-color);
+  padding: 50px;
+  border-radius: 10px;
+}
+
+.bet-choice-button{
+  margin: 10px;
+  padding: 5px;
+  background-color: var(--primary-color);
+  border: 1px solid var(--secondary-color);
+  
 }
