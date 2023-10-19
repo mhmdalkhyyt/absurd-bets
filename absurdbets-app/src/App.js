@@ -87,7 +87,7 @@ const ConnectionStatus = () => {
 
   useEffect(() => {
     // Fetch connection status from the backend when the component mounts
-    fetch('jdbc:mysql://localhost:3306/AbsurdBetsTestDB') // Replace with your actual API endpoint
+    fetch('/api/bets') // Replace with your actual API endpoint
       .then(response => response.json())
       .then(data => setStatus(data.status))
       .catch(error => {

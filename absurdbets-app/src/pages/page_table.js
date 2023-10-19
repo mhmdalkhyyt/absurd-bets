@@ -5,7 +5,7 @@ const PageTable = () => {
 
     useEffect(() => {
         // Fetch data from the backend when the component mounts
-        fetch('/api/bets') // Replace with your actual API endpoint
+        fetch('jdbc:mysql://localhost:3306/AbsurdBetsTestDB') // Replace with your actual API endpoint
             .then(response => response.json())
             .then(data => setBets(data))
             .catch(error => console.error('Error fetching data:', error));
