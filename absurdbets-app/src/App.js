@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import React, { useState, useEffect  } from 'react';
+import { useHistory } from 'react-router-dom';
 import { BrowserRouter as Router, Route, Switch, Link } from './';
 import HomePage from './App.js';
 import PageTable from './pages/page_table';
@@ -105,18 +106,18 @@ const ConnectionStatus = () => {
 };
 
 const RedirectButton = () => {
-  const history = useHistory();
+    const history = useHistory();
 
-  const redirectToPageTable = () => {
-    history.push('/pages/page_Table');
-  };
+    const redirectToPageTable = () => {
+        history.push('/pages/page_table');
+    };
 
-  return (
-    <div>
-      <h1>Welcome to My App</h1>
-      <button onClick={redirectToPageTable}>Go to Page Table</button>
-    </div>
-  );
+    return (
+        <div>
+            <h1>Welcome to My App</h1>
+            <button onClick={redirectToPageTable}>Go to Page Table</button>
+        </div>
+    );
 };
 
 export default LandingPage;
