@@ -89,7 +89,7 @@ const ConnectionStatus = () => {
 
   useEffect(() => {
     // Fetch connection status from the backend when the component mounts
-    fetch('jdbc:mysql://localhost:3306/AbsurdBetsTestDB') // Replace with your actual API endpoint
+    fetch('/api/bets') // Replace with your actual API endpoint
       .then(response => response.json())
       .then(data => setStatus(data.status))
       .catch(error => {
@@ -105,6 +105,7 @@ const ConnectionStatus = () => {
   );
 };
 
+<<<<<<< HEAD
 
 
 
@@ -144,6 +145,21 @@ const PageTable = () => {
           </table>
       </div>
   );
+=======
+const RedirectButton = () => {
+    const history = useHistory();
+
+    const redirectToPageTable = () => {
+        history.push('/pages/page_table');
+    };
+
+    return (
+        <div>
+            <h1>Welcome to My App</h1>
+            <button onClick={redirectToPageTable}>Go to Page Table</button>
+        </div>
+    );
+>>>>>>> 38ad17420733b6d8a6cbe54b58380dde5e82771f
 };
 
 
