@@ -99,7 +99,7 @@ const ConnectionStatus = () => {
 
   return (
     <div>
-      <h2>Connection status: {status}</h2>
+      <h2>Connection status: if empty ok {status}</h2>
     </div>
   );
 };
