@@ -82,9 +82,6 @@ const ButtonComponent = () => {
 
 
 
-
-
-
 const ConnectionStatus = () => {
   const [status, setStatus] = useState('');
 
