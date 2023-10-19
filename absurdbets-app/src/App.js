@@ -2,9 +2,10 @@ import logo from './logo.svg';
 import './App.css';
 
 import React, { useState, useEffect  } from 'react';
+
 import { BrowserRouter as Router, Route, Switch, Link } from './';
 import HomePage from './App.js';
-import PageTable from './pages/page_table';
+//import PageTable from './pages/page_table';
 import BurgerMenu from './Components/functions';
 
 const LandingPage = () => {
@@ -23,7 +24,7 @@ const LandingPage = () => {
 
         <div>
           <div>
-            <ConnectionStatus/>
+            <PageTable/>
           </div>
         <GetBet/>
         </div>
@@ -54,7 +55,7 @@ const BettingCard = ({ header, description }) => {
       <h2>{header}</h2>
       <p>{description}</p>
       <ButtonComponent />
-      <RedirectButton/>
+      
     </div>
   );
 };
@@ -104,20 +105,48 @@ const ConnectionStatus = () => {
   );
 };
 
-const RedirectButton = () => {
-  const history = useHistory();
 
-  const redirectToPageTable = () => {
-    history.push('/pages/page_Table');
-  };
+
+
+const PageTable = () => {
+  const [bets, setBets] = useState([]);
+
+  useEffect(() => {
+      // Fetch data from the backend when the component mounts
+      fetch('jdbc:mysql://localhost:3306/AbsurdBetsTestDB') // Replace with your actual API endpoint
+          .then(response => response.json())
+          .then(data => setBets(data))
+          .catch(error => console.error('Error fetching data:', error));
+  }, []); // Empty dependency array ensures the effect runs once after the initial render
 
   return (
-    <div>
-      <h1>Welcome to My App</h1>
-      <button onClick={redirectToPageTable}>Go to Page Table</button>
-    </div>
+      <div>
+          <h1>Bets Table</h1>
+          <table>
+              <thead>
+                  <tr>
+                      <th>ID</th>
+                      <th>User ID</th>
+                      <th>Bet amount</th>
+                      {/* Add more table headers based on your database schema */}
+                  </tr>
+              </thead>
+              <tbody>
+                  {bets.map(bet => (
+                      <tr key={bet.id}>
+                          <td>{bet.id}</td>
+                          <td>{bet.user_id}</td>
+                          <td>{bet.bet_amount}</td>
+                          {/* Add more table cells based on your database schema */}
+                      </tr>
+                  ))}
+              </tbody>
+          </table>
+      </div>
   );
 };
+
+
 
 export default LandingPage;
 
