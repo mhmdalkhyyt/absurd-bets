@@ -1,14 +1,11 @@
-import logo from './logo.svg';
+
 import './App.css';
 
 import React, { useState, useEffect  } from 'react';
 
-import { BrowserRouter as Router, Route, Switch, Link } from './';
-import HomePage from './App.js';
-//import PageTable from './pages/page_table';
-import BurgerMenu from './Components/functions';
 
 const LandingPage = () => {
+    console.log('Loading Page Table')
   return (
     <div className="landing-page">
       <header className="header">
@@ -89,7 +86,7 @@ const ConnectionStatus = () => {
 
   useEffect(() => {
     // Fetch connection status from the backend when the component mounts
-    fetch('localhost:8080') // Replace with your actual API endpoint
+    fetch('api/bets') // Replace with your actual API endpoint
       .then(response => response.json())
       .then(data => setStatus(data.status))
       .catch(error => {
@@ -107,15 +104,24 @@ const ConnectionStatus = () => {
 
 
 const PageTable = () => {
-  const [bets, setBets] = useState([]);
+    const [bets, setBets] = useState([]);
+    console.log('Loading Page Table');
 
-  useEffect(() => {
-      // Fetch data from the backend when the component mounts
-      fetch('jdbc:mysql://localhost:3306/AbsurdBetsTestDB') // Replace with your actual API endpoint
-          .then(response => response.json())
-          .then(data => setBets(data))
-          .catch(error => console.error('Error fetching data:', error));
-  }, []); // Empty dependency array ensures the effect runs once after the initial render
+    useEffect(() => {
+        // Fetch data from the backend when the component mounts
+        fetch('api/bets')
+            .then(response => response.json({"user":"cat"}))
+            .then(data => {
+                // Ensure data is an array before setting state
+                if (Array.isArray(data)) {
+                    setBets(data);
+                } else {
+                    console.log(data)
+                    console.error('Invalid data format received:', data);
+                }
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    }, []);
 
   return (
       <div>
