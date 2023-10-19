@@ -89,7 +89,7 @@ const ConnectionStatus = () => {
 
   useEffect(() => {
     // Fetch connection status from the backend when the component mounts
-    fetch('/api/bets') // Replace with your actual API endpoint
+    fetch('localhost:8080') // Replace with your actual API endpoint
       .then(response => response.json())
       .then(data => setStatus(data.status))
       .catch(error => {
