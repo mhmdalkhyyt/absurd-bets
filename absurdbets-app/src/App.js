@@ -54,6 +54,7 @@ const BettingCard = ({ header, description }) => {
       <h2>{header}</h2>
       <p>{description}</p>
       <ButtonComponent />
+      <RedirectButton/>
     </div>
   );
 };
@@ -103,7 +104,20 @@ const ConnectionStatus = () => {
   );
 };
 
+const RedirectButton = () => {
+  const history = useHistory();
 
+  const redirectToPageTable = () => {
+    history.push('/pages/page_Table');
+  };
+
+  return (
+    <div>
+      <h1>Welcome to My App</h1>
+      <button onClick={redirectToPageTable}>Go to Page Table</button>
+    </div>
+  );
+};
 
 export default LandingPage;
 
