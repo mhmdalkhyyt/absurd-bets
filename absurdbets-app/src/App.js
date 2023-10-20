@@ -21,7 +21,7 @@ const LandingPage = () => {
 
         <div>
           <div>
-            <List></List>
+           <BetsTable/>
           </div>
 
         </div>
@@ -102,6 +102,45 @@ const ConnectionStatus = () => {
   );
 };
 
+const BetsTable = () => {
+  const [bets, setBets] = useState([]);
+
+  useEffect(() => {
+    // Fetch data from the API endpoint when the component mounts
+    axios.get('api/bets') // Replace this URL with your API endpoint
+      .then(response => {
+        // Update the state with the fetched data
+        setBets(response.data);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }, []); // Empty dependency array ensures this effect runs once after the initial render
+
+  return (
+    <div>
+      <h1>Bets Table</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Amount</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {bets.map(bet => (
+            <tr key={bet.id}>
+              <td>{bet.id}</td>
+              <td>{bet.amount}</td>
+              <td>{bet.status}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
 
 const PageTable = () => {
     const [bets, setBets] = useState([]);
@@ -150,24 +189,6 @@ const PageTable = () => {
   );
 
 };
-
-export default function List() {
-    const listItems = people.map(person =>
-        <li key={person.id}>
-            <img
-                src={getImageUrl(person)}
-                alt={person.name}
-            />
-            <p>
-                <b>{person.name}</b>
-                {' ' + person.profession + ' '}
-                known for {person.accomplishment}
-            </p>
-        </li>
-    );
-    return <ul>{listItems}</ul>;
-}
-
 
 
 
