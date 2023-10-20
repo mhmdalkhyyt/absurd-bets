@@ -131,8 +131,8 @@ const BetsTable = () => {
         <tbody>
           {bets.map(bet => (
             <tr key={bet.id}>
-              <td>{bet.id}</td>
-              <td>{bet.amount}</td>
+              <td>{bet.bet_id}</td>
+              <td>{bet.user_id}</td>
               <td>{bet.status}</td>
             </tr>
           ))}
