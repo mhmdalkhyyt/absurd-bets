@@ -1,4 +1,4 @@
-package com.absurdbetscorp.absurdbets;
+package com.absurdbetscorp.absurdbets.entity;
 
 
 import jakarta.persistence.Entity;
