@@ -18,3 +18,9 @@ bets that are absurd
 
 
 
+#How to Connect:
+1. Create MySQL Database on localmachine called absurdbets_db
+2. Enter credentials in application.properties
+3. Right Click Pom.xml File -> Maven -> Generate Sources Update Folders
+4. Run Code, make sure Database correctly Connects, Tables should get added.
+5. cd absurdbets-app, npm start.
