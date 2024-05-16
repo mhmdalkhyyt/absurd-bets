@@ -12,8 +12,8 @@ public class CorsConfig {
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
         config.addAllowedOrigin("http://localhost:3000"); // Allow frontend host
-        config.addAllowedMethod("/*"); // Allow all methods
-        config.addAllowedHeader("/*"); // Allow all headers
+        config.addAllowedMethod(CorsConfiguration.ALL); // Allow all methods
+        config.addAllowedHeader(CorsConfiguration.ALL); // Allow all headers
         config.setAllowCredentials(true); // Allow credentials
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

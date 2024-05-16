@@ -1,50 +1,43 @@
 package com.absurdbetscorp.absurdbets.entity;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+
 @Entity
 public class Bets {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long betId;
-    private Long userId;
-    private double betAmount;
+    private Long id;
 
-    // Constructors, getters, and setters
+    private String betDescription;
+    private long userId;
 
     public Bets() {
+        // Default constructor for JPA
     }
 
-    public Bets(Long userId, double betAmount) {
+    public Bets(String betDescription, long userId) {
+        this.betDescription = betDescription;
         this.userId = userId;
-        this.betAmount = betAmount;
     }
 
-    public Long getBetId() {
-        return betId;
+    public String getBetDescription() {
+        return betDescription;
     }
 
-    public void setBetId(Long betId) {
-        this.betId = betId;
+    public void setBetDescription(String betDescription) {
+        this.betDescription = betDescription;
     }
 
-    public Long getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
-    }
-
-    public double getBetAmount() {
-        return betAmount;
-    }
-
-    public void setBetAmount(double betAmount) {
-        this.betAmount = betAmount;
     }
 }

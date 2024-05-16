@@ -2,6 +2,7 @@ package com.absurdbetscorp.absurdbets.controller;
 
 import com.absurdbetscorp.absurdbets.entity.Bets;
 import com.absurdbetscorp.absurdbets.repository.BetsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,6 +13,7 @@ public class BetsController {
 
     private final BetsRepository betsRepository;
 
+    @Autowired
     public BetsController(BetsRepository betsRepository) {
         this.betsRepository = betsRepository;
     }
@@ -21,7 +23,7 @@ public class BetsController {
         return betsRepository.findAll();
     }
 
-    @PostMapping
+    @PostMapping("/createBet")
     public Bets createBet(@RequestBody Bets bet) {
         return betsRepository.save(bet);
     }
